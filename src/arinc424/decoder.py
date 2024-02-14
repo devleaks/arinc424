@@ -2,8 +2,7 @@ from collections import defaultdict
 import string
 
 
-class Field():
-
+class Field:
     def __init__(self, name, value, decode_fn):
         self.name = name
         self.value = value
@@ -16,95 +15,96 @@ class Field():
 # This file decodes fields within records based on
 # Chapter 5 - Field Definitions
 
+
 def def_val():
     return "<UNKNOWN>"
 
 
 # 5.2 Record Type
 def field_002(value, record):
-    if value == 'S':
-        return 'Standard'
-    elif value == 'T':
-        return 'Tailored'
+    if value == "S":
+        return "Standard"
+    elif value == "T":
+        return "Tailored"
     else:
-        return 'Error: invalid record type'
+        return "Error: invalid record type"
 
 
 # 5.3 Customer / Area Code
 def field_003(value, record):
     match value:
-        case 'USA':
-            return 'United States of America'
-        case 'AFR':
-            return 'Africa'
-        case 'CAN':
-            return 'Canada'
-        case 'EEU':
-            return 'Eastern Europe and Asia'
-        case 'EUR':
-            return 'Europe'
-        case 'LAM':
-            return 'Latin America'
-        case 'MES':
-            return 'Middle East'
-        case 'PAC':
-            return 'Pacific'
-        case 'SAM':
-            return 'Southern America'
-        case 'SPA':
-            return 'South Pacific'
+        case "USA":
+            return "United States of America"
+        case "AFR":
+            return "Africa"
+        case "CAN":
+            return "Canada"
+        case "EEU":
+            return "Eastern Europe and Asia"
+        case "EUR":
+            return "Europe"
+        case "LAM":
+            return "Latin America"
+        case "MES":
+            return "Middle East"
+        case "PAC":
+            return "Pacific"
+        case "SAM":
+            return "Southern America"
+        case "SPA":
+            return "South Pacific"
         case _:
-            return '<UNKNOWN>'
+            return "<UNKNOWN>"
 
 
 # 5.4 & 5.5 Section Code & Subsection Code
 def field_004(value, record):
-    if (value.strip() == ''):
+    if value.strip() == "":
         return value
     sections = defaultdict(def_val)
-    sections['AS'] = 'Grid MORA'
-    sections['D '] = 'VHF Navaid'
-    sections['DB'] = 'NDB Navaid'
-    sections['EA'] = 'Waypoint'
-    sections['EM'] = 'Airways Marker'
-    sections['EP'] = 'Holding Pattern'
-    sections['ER'] = 'Airways and Route'
-    sections['ET'] = 'Preferred Route'
-    sections['EU'] = 'Airway Restrictions'
-    sections['EV'] = 'Enroute Communication'
-    sections['HA'] = 'Heliport Pads'
-    sections['HC'] = 'Heliport Terminal Waypoint'
-    sections['HD'] = 'Heliport SID'
-    sections['HE'] = 'Heliport STAR'
-    sections['HF'] = 'Heliport Approach Procedure'
-    sections['HK'] = 'Heliport TAA'
-    sections['HS'] = 'Heliport MSA'
-    sections['HV'] = 'Heliport Communication'
-    sections['PA'] = 'Airport Reference Point'
-    sections['PB'] = 'Airport Gates'
-    sections['PC'] = 'Airport Terminal Waypoint'
-    sections['PD'] = 'Airport SID'
-    sections['PE'] = 'Airport STAR'
-    sections['PF'] = 'Airport Approach Procedure'
-    sections['PG'] = 'Airport Runway'
-    sections['PI'] = 'Airport Localizer/Glideslope'
-    sections['PK'] = 'Airport TAA'
-    sections['PL'] = 'Airport MLS'
-    sections['PM'] = 'Airport Localizer Marker'
-    sections['PN'] = 'Airport Terminal'
-    sections['PP'] = 'Airport Path'
-    sections['PR'] = 'Airport Flt Planning ARR/DEP'
-    sections['PS'] = 'Airport MSA'
-    sections['PT'] = 'Airport GLS Station'
-    sections['PV'] = 'Airport Communication'
-    sections['R '] = 'Company Route'
-    sections['RA'] = 'Alternate Record'
-    sections['TC'] = 'Cruising Table'
-    sections['TG'] = 'Geographical Reference'
-    sections['TN'] = 'RNAV Name Table'
-    sections['UC'] = 'Controller Airspace'
-    sections['UF'] = 'Airspace FIR/UIR'
-    sections['UR'] = 'Restrictive Airspace'
+    sections["AS"] = "Grid MORA"
+    sections["D "] = "VHF Navaid"
+    sections["DB"] = "NDB Navaid"
+    sections["EA"] = "Waypoint"
+    sections["EM"] = "Airways Marker"
+    sections["EP"] = "Holding Pattern"
+    sections["ER"] = "Airways and Route"
+    sections["ET"] = "Preferred Route"
+    sections["EU"] = "Airway Restrictions"
+    sections["EV"] = "Enroute Communication"
+    sections["HA"] = "Heliport Pads"
+    sections["HC"] = "Heliport Terminal Waypoint"
+    sections["HD"] = "Heliport SID"
+    sections["HE"] = "Heliport STAR"
+    sections["HF"] = "Heliport Approach Procedure"
+    sections["HK"] = "Heliport TAA"
+    sections["HS"] = "Heliport MSA"
+    sections["HV"] = "Heliport Communication"
+    sections["PA"] = "Airport Reference Point"
+    sections["PB"] = "Airport Gates"
+    sections["PC"] = "Airport Terminal Waypoint"
+    sections["PD"] = "Airport SID"
+    sections["PE"] = "Airport STAR"
+    sections["PF"] = "Airport Approach Procedure"
+    sections["PG"] = "Airport Runway"
+    sections["PI"] = "Airport Localizer/Glideslope"
+    sections["PK"] = "Airport TAA"
+    sections["PL"] = "Airport MLS"
+    sections["PM"] = "Airport Localizer Marker"
+    sections["PN"] = "Airport Terminal"
+    sections["PP"] = "Airport Path"
+    sections["PR"] = "Airport Flt Planning ARR/DEP"
+    sections["PS"] = "Airport MSA"
+    sections["PT"] = "Airport GLS Station"
+    sections["PV"] = "Airport Communication"
+    sections["R "] = "Company Route"
+    sections["RA"] = "Alternate Record"
+    sections["TC"] = "Cruising Table"
+    sections["TG"] = "Geographical Reference"
+    sections["TN"] = "RNAV Name Table"
+    sections["UC"] = "Controller Airspace"
+    sections["UF"] = "Airspace FIR/UIR"
+    sections["UR"] = "Restrictive Airspace"
     return sections[value]
 
 
@@ -116,73 +116,73 @@ def field_006(value, record):
 # 5.7 Route Type
 def field_007(value, record):
     d = defaultdict(def_val)
-    if record.code == 'ER':
+    if record.code == "ER":
         # Enroute Airway Records (ER)
-        d['A'] = 'Airline Airway (Tailored Data)'
-        d['C'] = 'Control'
-        d['D'] = 'Direct Route'
-        d['H'] = 'Helicopter Airways'
-        d['O'] = 'Officially Designated Airways'
-        d['R'] = 'RNAV Airways'
-        d['S'] = 'Undesignated ATS Route'
-    elif record.code == 'ET':
+        d["A"] = "Airline Airway (Tailored Data)"
+        d["C"] = "Control"
+        d["D"] = "Direct Route"
+        d["H"] = "Helicopter Airways"
+        d["O"] = "Officially Designated Airways"
+        d["R"] = "RNAV Airways"
+        d["S"] = "Undesignated ATS Route"
+    elif record.code == "ET":
         # Preferred Route Records (ET)
-        d['C'] = 'North American Routes for North Atlantic Traffic Common Portion'
-        d['D'] = 'Preferential Routes'
-        d['J'] = 'Pacific Oceanic Transition Routes (PACOTS)'
-        d['M'] = 'RNAV Airways'
-        d['N'] = 'Undesignated ATS Route'
-    elif record.code == 'HD':
+        d["C"] = "North American Routes for North Atlantic Traffic Common Portion"
+        d["D"] = "Preferential Routes"
+        d["J"] = "Pacific Oceanic Transition Routes (PACOTS)"
+        d["M"] = "RNAV Airways"
+        d["N"] = "Undesignated ATS Route"
+    elif record.code == "HD":
         # Preferred Route Records (HD)
-        d['0'] = 'Engine Out SID'
-        d['1'] = 'SID Runway Transition'
-        d['2'] = 'SID or SID Common Route'
-        d['3'] = 'SID Enroute Transition'
-        d['4'] = 'RNAV SID Runway Transition'
-        d['5'] = 'RNAV SID or SID Common Route'
-        d['6'] = 'RNAV SID Enroute Transition'
-        d['F'] = 'FMS SID Runway Transition'
-        d['M'] = 'FMS SID or SID Common Route'
-        d['S'] = 'FMS SID Enroute Transition'
-        d['T'] = 'Vector SID Runway Transition'
-        d['V'] = 'Vector SID Enroute Transition'
-    elif record.code == 'PE' or record.code == 'HE':
+        d["0"] = "Engine Out SID"
+        d["1"] = "SID Runway Transition"
+        d["2"] = "SID or SID Common Route"
+        d["3"] = "SID Enroute Transition"
+        d["4"] = "RNAV SID Runway Transition"
+        d["5"] = "RNAV SID or SID Common Route"
+        d["6"] = "RNAV SID Enroute Transition"
+        d["F"] = "FMS SID Runway Transition"
+        d["M"] = "FMS SID or SID Common Route"
+        d["S"] = "FMS SID Enroute Transition"
+        d["T"] = "Vector SID Runway Transition"
+        d["V"] = "Vector SID Enroute Transition"
+    elif record.code == "PE" or record.code == "HE":
         # Airport STAR (PE) and Heliport STAR (HE) Records
-        d['1'] = 'STAR Enroute Transition'
-        d['2'] = 'STAR or STAR Common Route'
-        d['3'] = 'STAR Runway Transition'
-        d['4'] = 'RNAV STAR Enroute Transition'
-        d['5'] = 'RNAV STAR or STAR Common Route'
-        d['6'] = 'RNAV STAR Runway Transition'
-        d['7'] = 'Profile Descent Enroute Transition'
-        d['8'] = 'Profile Descent Common Route'
-        d['9'] = 'Profile Descent Runway Transition'
-        d['F'] = 'FMS STAR Enroute Transition'
-        d['M'] = 'FMS STAR or STAR Common Route'
-        d['S'] = 'FMS STAR Runway Transition'
-    elif record.code == 'PF' or record.code == 'HF':
+        d["1"] = "STAR Enroute Transition"
+        d["2"] = "STAR or STAR Common Route"
+        d["3"] = "STAR Runway Transition"
+        d["4"] = "RNAV STAR Enroute Transition"
+        d["5"] = "RNAV STAR or STAR Common Route"
+        d["6"] = "RNAV STAR Runway Transition"
+        d["7"] = "Profile Descent Enroute Transition"
+        d["8"] = "Profile Descent Common Route"
+        d["9"] = "Profile Descent Runway Transition"
+        d["F"] = "FMS STAR Enroute Transition"
+        d["M"] = "FMS STAR or STAR Common Route"
+        d["S"] = "FMS STAR Runway Transition"
+    elif record.code == "PF" or record.code == "HF":
         # Airport STAR (PF) and Heliport STAR (HF) Records
-        d['A'] = 'Approach Transition'
-        d['B'] = 'Localizer/Backcourse Approach'
-        d['D'] = 'VORDME Approach'
-        d['F'] = 'Flight Management System (FMS) Approach'
-        d['G'] = 'Instrument Guidance System (IGS) Approach'
-        d['I'] = 'Instrument Landing System (ILS) Approach'
-        d['J'] = 'GNSS Landing System (GLS) Approach'
-        d['L'] = 'Localizer Only (LOC) Approach'
-        d['M'] = 'Microwave Landing System (MLS) Approach'
-        d['N'] = 'Non-Directional Beacon (NDB) Approach'
-        d['P'] = 'Global Position System (GPS) Approach'
-        d['Q'] = 'Non-Directional Beacon + DME (NDB+DME) Approach'
-        d['R'] = 'Area Navigation (RNAV) Approach (Note 1)'
-        d['S'] = 'VOR Approach using VORDME/VORTAC'
-        d['T'] = 'TACAN Approach'
-        d['U'] = 'Simplified Directional Facility (SDF) Approach'
-        d['V'] = 'VOR Approach'
-        d['W'] = 'Microwave Landing System (MLS), Type A Approach'
-        d['X'] = 'Localizer Directional Aid (LDA) Approach'
-        d['Y'] = 'Microwave Landing System (MLS), Type B and C Approach'
-        d['Z'] = 'Missed Approach'
+        d["A"] = "Approach Transition"
+        d["B"] = "Localizer/Backcourse Approach"
+        d["D"] = "VORDME Approach"
+        d["F"] = "Flight Management System (FMS) Approach"
+        d["G"] = "Instrument Guidance System (IGS) Approach"
+        d["I"] = "Instrument Landing System (ILS) Approach"
+        d["J"] = "GNSS Landing System (GLS) Approach"
+        d["L"] = "Localizer Only (LOC) Approach"
+        d["M"] = "Microwave Landing System (MLS) Approach"
+        d["N"] = "Non-Directional Beacon (NDB) Approach"
+        d["P"] = "Global Position System (GPS) Approach"
+        d["Q"] = "Non-Directional Beacon + DME (NDB+DME) Approach"
+        d["R"] = "Area Navigation (RNAV) Approach (Note 1)"
+        d["S"] = "VOR Approach using VORDME/VORTAC"
+        d["T"] = "TACAN Approach"
+        d["U"] = "Simplified Directional Facility (SDF) Approach"
+        d["V"] = "VOR Approach"
+        d["W"] = "Microwave Landing System (MLS), Type A Approach"
+        d["X"] = "Localizer Directional Aid (LDA) Approach"
+        d["Y"] = "Microwave Landing System (MLS), Type B and C Approach"
+        d["Z"] = "Missed Approach"
     return d[value] if d[value] != "bad value" else value + " - BAD VALUE"
 
 
@@ -216,15 +216,16 @@ def field_011(value, record):
 def field_012(value, record):
     match len(value.strip()):
         case 1:
-            return f'MSA Table, TAA Table, Cruise Table - Sequence No. {value}'
+            return f"MSA Table, TAA Table, Cruise Table - Sequence No. {value}"
         case 2:
-            return f'VHF Navaid Limitation Continuation Records - Sequence No. {value}'
+            return f"VHF Navaid Limitation Continuation Records - Sequence No. {value}"
         case 3:
-            return f'SID/STAR/Approach and Company Routes - Sequence No. {value}'
+            return f"SID/STAR/Approach and Company Routes - Sequence No. {value}"
         case 4:
-            return f'Enroute Airways, Preferred Routes, FIR/UIR, and Restrictive Airspace - Sequence No. {value}'
+            return f"Enroute Airways, Preferred Routes, FIR/UIR, and Restrictive Airspace - Sequence No. {value}"
         case _:
             import sys
+
             sys.exit()
 
 
@@ -241,48 +242,126 @@ def field_014(value, record):
 # 5.16 Continuation Record Number (CONT NR)
 def field_016(value, record):
     match value:
-        case '0':
-            return 'Primary Record'
-        case '1':
-            return 'Primary Record (with Cont.)'
+        case "0":
+            return "Primary Record"
+        case "1":
+            return "Primary Record (with Cont.)"
         case _:
-            return str(value) + ' - Continuation'
+            return str(value) + " - Continuation"
 
 
 # 5.17 Waypoint Description Code (DESC CODE)
 def field_017(value, record):
-    s = ''
-    match value[0]:
-        case 'A':
-            s += ('Airport as Fix')
-        case 'E':
-            s += ('Essential Waypoint')
-        case 'F':
-            s += ('Off Airway Floating Waypoint')
-        case 'G':
-            s += ('Runway/Helipad as Fix')
-        case 'H':
-            s += ('Heliport as Waypoint')
-        case 'N':
-            s += ('NDB Navaid as Waypoint')
-        case 'P':
-            s += ('Phantom Waypoint')
-        case 'R':
-            s += ('Non-Essential Waypoint')
-        case 'T':
-            s += ('Transition Essential Waypoint')
-        case 'V':
-            s += ('VHF Navaid As Fix')
+    s = ""
+    match value[0]:  # column 40
+        case "A":
+            s += "Airport as Fix"
+        case "E":
+            s += "Essential Waypoint"
+        case "F":
+            s += "Off Airway Floating Waypoint"
+        case "G":
+            s += "Runway/Helipad as Fix"
+        case "H":
+            s += "Heliport as Waypoint"
+        case "N":
+            s += "NDB Navaid as Waypoint"
+        case "P":
+            s += "Phantom Waypoint"
+        case "R":
+            s += "Non-Essential Waypoint"
+        case "T":
+            s += "Transition Essential Waypoint"
+        case "V":
+            s += "VHF Navaid As Fix"
         case _:
             pass
-    # TODO: finish this
+
+    match value[1]:  # column 41
+        case "B":
+            s += "Flyover Waypoint, Ending Leg"
+        case "E":
+            s += "End of Continuous Segment"
+        case "U":
+            s += "Uncharted Airway Intersection"
+        case "Y":
+            s += "Fly-Over Waypoint"
+
+    match value[2]:  # column 42
+        case "A":
+            s += "Unnamed Stepdown Fix Final Approach Segment"
+        case "B":
+            s += "Unnamed Stepdown Fix Intermediate Approach Segment"
+        case "C":
+            s += "ATC Compulsory Reporting Point"
+        case "G":
+            s += "Oceanic Gateway Waypoint"
+        case "M":
+            s += "First Leg of Missed Approach Procedure"
+        case "R":
+            s += "Fix used for turning final approach"
+        case "S":
+            s += "Named Stepdown Fix"
+
+    match value[3]:  # column 43
+        case "A":
+            s += "Initial Approach Fix"
+        case "B":
+            s += "Intermediate Approach Fix"
+        case "C":
+            s += "Holding at Initial Approach Fix"
+        case "D":
+            s += "Initial Approach Fix at FACF"
+        case "E":
+            s += "Final End Point"
+        case "F":
+            s += "Final Approach Fix"
+        case "G":
+            s += "Source provided Enroute Waypoint without Holding"
+        case "H":
+            s += "Source provided Enroute Waypoint with Holding"
+        case "I":
+            s += "Final Approach Course Fix"
+        case "M":
+            s += "Missed Approach Point"
+        case "N":
+            s += "Engine Out SID Missed Approach Disarm Point"
+        case "P":
+            s += "Initial Departure Fix"
+        case "Q":
+            s += "Quiet Climb SID Restore Point"
+        case _:
+            pass
 
     return s
 
 
 # 5.18 Boundary Code (BDY CODE)
 def field_018(value, record):
-    return value
+    s = ""
+    match value[0]:  # column 42
+        case "U":
+            s += "USA"
+        case "C":
+            s += "Canada"
+        case "P":
+            s += "Pacific"
+        case "L":
+            s += "Latin America"
+        case "S":
+            s += "South America"
+        case "1":
+            s += "South Pacific"
+        case "E":
+            s += "Europe"
+        case "2":
+            s += "Eastern Europe"
+        case "M":
+            s += "Middle East, South Asia"
+        case "A":
+            s += "Africa"
+
+    return s
 
 
 # 5.19 Level (LEVEL)
@@ -292,13 +371,13 @@ def field_019(value, record):
 
 # 5.20 Turn Direction (TURN DIR)
 def field_020(value, record):
-    if value == 'R':
-        return 'Right'
-    elif value == 'L':
-        return 'Left'
+    if value == "R":
+        return "Right"
+    elif value == "L":
+        return "Left"
     # TODO check this
-    elif value == 'E' or value == ' ':
-        return 'Either'
+    elif value == "E" or value == " ":
+        return "Either"
     else:
         raise ValueError("Invalid Turn Direction:", value)
 
@@ -365,12 +444,12 @@ def field_028(value, record):
 
 # 5.29 Altitude Description (ALT DESC)
 def field_029(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.30 Altitude/Minimum Altitude
 def field_030(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.31 File Record Number (FRN)
@@ -381,7 +460,7 @@ def field_031(value, record):
 # 5.32 Cycle Date (CYCLE)
 def field_032(value, record):
     year = "19" + value[:2] if int(value[:2]) > 50 else "20" + value[:2]
-    return '{}, Release {}'.format(year, value[2:])
+    return "{}, Release {}".format(year, value[2:])
 
 
 # 5.33 VOR/NDB Identifier (VOR IDENT/NDB IDENT)
@@ -391,8 +470,8 @@ def field_033(value, record):
 
 # 5.34 VOR/NDB Frequency (VOR/NDB FREQ)
 def field_034(value, record):
-    if (value.isnumeric()):
-        return "{:.2f}".format(float(value)/100)
+    if value.isnumeric():
+        return "{:.2f}".format(float(value) / 100)
     else:
         return "BAD VALUE"
 
@@ -449,7 +528,7 @@ def field_038(value, record):
 
 # 5.39 Magnetic Variation (MAG VAR, D MAG VAR)
 def field_039(value, record):
-    return value if value.strip() == '' else "{:03} {}".format(int(value[1:]), value[0])
+    return value if value.strip() == "" else "{:03} {}".format(int(value[1:]), value[0])
 
 
 # 5.40 DME Elevation (DME ELEV)
@@ -465,55 +544,55 @@ def field_041(value, record):
 # 5.42 Waypoint Type (TYPE)
 def field_042(value, record):
     match value[0]:
-        case 'C':
+        case "C":
             return "Combined Named Intersection and RNAV"
-        case 'I':
-            return 'Unnamed, Charted Intersection'
-        case 'N':
-            return 'NDB Navaid as Waypoint' + value[1:]
-        case 'R':
-            return 'Named Intersection'
-        case 'U':
-            return 'Uncharted Airway Intersection'
-        case 'V':
-            return 'VFR Waypoint'
-        case 'W':
-            return 'RNAV Waypoint'
+        case "I":
+            return "Unnamed, Charted Intersection"
+        case "N":
+            return "NDB Navaid as Waypoint" + value[1:]
+        case "R":
+            return "Named Intersection"
+        case "U":
+            return "Uncharted Airway Intersection"
+        case "V":
+            return "VFR Waypoint"
+        case "W":
+            return "RNAV Waypoint"
     match value[1]:
-        case 'A':
-            return 'Final Approach Fix'
-        case 'B':
-            return 'Initial and Final Approach Fix'
-        case 'C':
-            return 'Final Approach Course Fix'
-        case 'D':
-            return 'Intermediate Approach Fix'
-        case 'E':
-            return 'Off-Route intersection in FAA National Reference System'
-        case 'F':
-            return 'Off-Route Intersection'
-        case 'I':
-            return 'Initial Approach Fix'
-        case 'K':
-            return 'Final Approach Course Fix at Initial Approach Fix'
-        case 'L':
-            return 'Final Approach Course Fix at Intermediate Approach Fix'
-        case 'M':
-            return 'Missed Approach Fix'
-        case 'N':
-            return 'Initial Approach Fix and Missed Approach Fix'
-        case 'O':
-            return 'Oceanic Entry/Exit Waypoint'
-        case 'P':
-            return 'Pitch and Catch Point in the FAA High Altitude Redesign'
-        case 'S':
-            return 'AACAA and SUA Waypoints in the FAA High Altitude Redesign'
-        case 'U':
-            return 'FIR/UIR or Controlled Airspace Intersection'
-        case 'V':
-            return 'Latitude/Longitude Intersection, Full Degree of Latitude'
-        case 'W':
-            return 'Latitude/Longitude Intersection, Half Degree of Latitude'
+        case "A":
+            return "Final Approach Fix"
+        case "B":
+            return "Initial and Final Approach Fix"
+        case "C":
+            return "Final Approach Course Fix"
+        case "D":
+            return "Intermediate Approach Fix"
+        case "E":
+            return "Off-Route intersection in FAA National Reference System"
+        case "F":
+            return "Off-Route Intersection"
+        case "I":
+            return "Initial Approach Fix"
+        case "K":
+            return "Final Approach Course Fix at Initial Approach Fix"
+        case "L":
+            return "Final Approach Course Fix at Intermediate Approach Fix"
+        case "M":
+            return "Missed Approach Fix"
+        case "N":
+            return "Initial Approach Fix and Missed Approach Fix"
+        case "O":
+            return "Oceanic Entry/Exit Waypoint"
+        case "P":
+            return "Pitch and Catch Point in the FAA High Altitude Redesign"
+        case "S":
+            return "AACAA and SUA Waypoints in the FAA High Altitude Redesign"
+        case "U":
+            return "FIR/UIR or Controlled Airspace Intersection"
+        case "V":
+            return "Latitude/Longitude Intersection, Full Degree of Latitude"
+        case "W":
+            return "Latitude/Longitude Intersection, Half Degree of Latitude"
         case _:
             return "Unknown Waypoint Type"
 
@@ -530,8 +609,8 @@ def field_044(value, record):
 
 # 5.45 Localizer Frequency (FREQ)
 def field_045(value, record):
-    if (value.isnumeric()):
-        return "{:.2f}".format(float(value)/100)
+    if value.isnumeric():
+        return "{:.2f}".format(float(value) / 100)
     else:
         return "BAD VALUE"
 
@@ -573,13 +652,13 @@ def field_052(value, record):
 
 # 5.53 Transition Altitude/Level (TRANS ALTITUDE/LEVEL)
 def field_053(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.54 Longest Runway (LONGEST RWY)
 def field_054(value, record):
     if value.isnumeric():
-        return value.lstrip('0')+"00" + " ft"
+        return value.lstrip("0") + "00" + " ft"
     else:
         return value
 
@@ -621,8 +700,8 @@ def field_061(value, record):
 
 # 5.62 Inbound Holding Course (IB HOLD CRS)
 def field_062(value, record):
-    if (value.isnumeric()):
-        return float(value)/10
+    if value.isnumeric():
+        return float(value) / 10
     else:
         return "BAD VALUE"
 
@@ -639,7 +718,7 @@ def field_064(value, record):
 
 # 5.65 Leg Time (LEG TIME)
 def field_065(value, record):
-    return '{}m {}s'.format(int(value[0]), int(value[1])*6)
+    return "{}m {}s".format(int(value[0]), int(value[1]) * 6)
 
 
 # 5.66 Station Declination (STN DEC)
@@ -676,15 +755,15 @@ def field_071(value, record):
 def field_072(value, record):
     if value.isnumeric():
         return value + " knots (IAS)"
-    elif value.strip() == '':
+    elif value.strip() == "":
         return value
     else:
-        raise ValueError('Invalid speed' + value)
+        raise ValueError("Invalid speed" + value)
 
 
 # 5.73 Speed Limit Altitude
 def field_073(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.74 Component Elevation (GS ELEV, EL ELEV, AZ ELEV, BAZ ELEV)
@@ -729,16 +808,16 @@ def field_081(value, record):
 
 # 5.82 Waypoint Usage
 def field_082(value, record):
-    if value == ' B':
-        return 'HI and LO Altitude'
-    elif value == ' H':
-        return 'HI Altitude'
-    elif value == ' L':
-        return 'LO Altitude'
-    elif value == '  ':
-        return 'Terminal Use Only'
-    elif value == 'R ':
-        return 'RNAV'
+    if value == " B":
+        return "HI and LO Altitude"
+    elif value == " H":
+        return "HI Altitude"
+    elif value == " L":
+        return "LO Altitude"
+    elif value == "  ":
+        return "Terminal Use Only"
+    elif value == "R ":
+        return "RNAV"
     else:
         raise ValueError("Invalid Waypoint Usage")
 
@@ -760,7 +839,7 @@ def field_085(value, record):
 
 # 5.86 Cruise Altitude
 def field_086(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.87 Terminal/Alternate Airport (TERM/ALT ARPT)
@@ -786,39 +865,39 @@ def field_090(value, record):
 # 5.91 Continuation Record Application Type (APPL)
 def field_091(value, record):
     match value:
-        case 'A':
-            return 'Standard ARINC Continuation containing notes or other formatted data'
-        case 'B':
-            return 'Combined Controlling Agency/Call Sign and formatted Time of Operation'
-        case 'C':
-            return 'Call Sign/Controlling Agency Continuation'
-        case 'E':
-            return 'Primary Record Extension'
-        case 'L':
-            return 'VHF Navaid Limitation Continuation'
-        case 'N':
-            return 'Sector Narrative Continuation'
-        case 'T':
+        case "A":
+            return "Standard ARINC Continuation containing notes or other formatted data"
+        case "B":
+            return "Combined Controlling Agency/Call Sign and formatted Time of Operation"
+        case "C":
+            return "Call Sign/Controlling Agency Continuation"
+        case "E":
+            return "Primary Record Extension"
+        case "L":
+            return "VHF Navaid Limitation Continuation"
+        case "N":
+            return "Sector Narrative Continuation"
+        case "T":
             return 'Time of Operations Continuation "formatted time data"'
-        case 'U':
+        case "U":
             return 'Time of Operations Continuation "Narrative time data"'
-        case 'V':
-            return 'Time of Operations Continuation, Start/End Date'
-        case 'P':
-            return 'Flight Planning Application Continuation'
-        case 'Q':
-            return 'Flight Planning Application Primary Data Continuation'
-        case 'S':
-            return 'Simulation Application Continuation'
-        case 'W':
-            return 'Airport or Heliport Procedure Data Continuation with SBAS use authorization information'
+        case "V":
+            return "Time of Operations Continuation, Start/End Date"
+        case "P":
+            return "Flight Planning Application Continuation"
+        case "Q":
+            return "Flight Planning Application Primary Data Continuation"
+        case "S":
+            return "Simulation Application Continuation"
+        case "W":
+            return "Airport or Heliport Procedure Data Continuation with SBAS use authorization information"
         case _:
-            return 'Unknown Application Type: ' + str(value)
+            return "Unknown Application Type: " + str(value)
 
 
 # 5.92 Elevation (FAC ELEV)
 def field_092(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.93 Facility Characteristics (FAC CHAR)
@@ -864,66 +943,66 @@ def field_100(value, record):
 # 5.101 Communications Type (COMM TYPE)
 def field_101(value, record):
     d = defaultdict(def_val)
-    d['ACC'] = 'Area Control Center'
-    d['ACP'] = 'Airlift Command Post'
-    d['AIR'] = 'Air to Air'
-    d['APP'] = 'Approach Control'
-    d['ARR'] = 'Arrival Control'
-    d['ASO'] = 'Automatic Surface Observing System (ASOS)'
-    d['ATI'] = 'Automatic Terminal Info Service (ATIS)'
-    d['AWI'] = 'Airport Weather Information Broadcast (AWIB)'
-    d['AWO'] = 'Automatic Weather Observing Service (AWOS)'
-    d['AWS'] = 'Aerodrome Weather Information Services (AWIS)'
-    d['CLD'] = 'Clearance Delivery'
-    d['CPT'] = 'Clearance, Pre-Taxi'
-    d['CTA'] = 'Control Area (Terminal)'
-    d['CTL'] = 'Control'
-    d['DEP'] = 'Departure Control'
-    d['DIR'] = 'Director (Approach Control Radar)'
-    d['EFS'] = 'Enroute Flight Advisory Service (EFAS)'
-    d['EMR'] = 'Emergency'
-    d['FSS'] = 'Flight Service Station'
-    d['GCO'] = 'Ground Comm Outlet'
-    d['GND'] = 'Ground Control'
-    d['GTE'] = 'Gate Control'
-    d['HEL'] = 'Helicopter Frequency'
-    d['INF'] = 'Information'
-    d['MIL'] = 'Military Frequency'
-    d['MUL'] = 'Multicom'
-    d['OPS'] = 'Operations'
-    d['PAL'] = 'Pilot Activated Lighting (Note 1)'
-    d['RDO'] = 'Radio'
-    d['RDR'] = 'Radar'
-    d['RFS'] = 'Remote Flight Service Station (RFSS)'
-    d['RMP'] = 'Ramp/Taxi Control'
-    d['RSA'] = 'Airport Radar Service Area (ARSA)'
-    d['TCA'] = 'Terminal Control Area'
-    d['TMA'] = 'Terminal Control Area'
-    d['TML'] = 'Terminal'
-    d['TRS'] = 'Terminal Radar Service Area (TRSA)'
-    d['TWE'] = 'Transcribe Weather Broadcast (TWEB)'
-    d['TWR'] = 'Tower, Air Traffic Control'
-    d['UAC'] = 'Upper Area Control'
-    d['UNI'] = 'Unicom'
-    d['VOL'] = 'Volmet'
+    d["ACC"] = "Area Control Center"
+    d["ACP"] = "Airlift Command Post"
+    d["AIR"] = "Air to Air"
+    d["APP"] = "Approach Control"
+    d["ARR"] = "Arrival Control"
+    d["ASO"] = "Automatic Surface Observing System (ASOS)"
+    d["ATI"] = "Automatic Terminal Info Service (ATIS)"
+    d["AWI"] = "Airport Weather Information Broadcast (AWIB)"
+    d["AWO"] = "Automatic Weather Observing Service (AWOS)"
+    d["AWS"] = "Aerodrome Weather Information Services (AWIS)"
+    d["CLD"] = "Clearance Delivery"
+    d["CPT"] = "Clearance, Pre-Taxi"
+    d["CTA"] = "Control Area (Terminal)"
+    d["CTL"] = "Control"
+    d["DEP"] = "Departure Control"
+    d["DIR"] = "Director (Approach Control Radar)"
+    d["EFS"] = "Enroute Flight Advisory Service (EFAS)"
+    d["EMR"] = "Emergency"
+    d["FSS"] = "Flight Service Station"
+    d["GCO"] = "Ground Comm Outlet"
+    d["GND"] = "Ground Control"
+    d["GTE"] = "Gate Control"
+    d["HEL"] = "Helicopter Frequency"
+    d["INF"] = "Information"
+    d["MIL"] = "Military Frequency"
+    d["MUL"] = "Multicom"
+    d["OPS"] = "Operations"
+    d["PAL"] = "Pilot Activated Lighting (Note 1)"
+    d["RDO"] = "Radio"
+    d["RDR"] = "Radar"
+    d["RFS"] = "Remote Flight Service Station (RFSS)"
+    d["RMP"] = "Ramp/Taxi Control"
+    d["RSA"] = "Airport Radar Service Area (ARSA)"
+    d["TCA"] = "Terminal Control Area"
+    d["TMA"] = "Terminal Control Area"
+    d["TML"] = "Terminal"
+    d["TRS"] = "Terminal Radar Service Area (TRSA)"
+    d["TWE"] = "Transcribe Weather Broadcast (TWEB)"
+    d["TWR"] = "Tower, Air Traffic Control"
+    d["UAC"] = "Upper Area Control"
+    d["UNI"] = "Unicom"
+    d["VOL"] = "Volmet"
     return d[value] if d[value] != "bad value" else value + "BAD VALUE"
 
 
 # 5.102 Radar (RADAR)
 def field_102(value, record):
     match value:
-        case 'R':
-            return 'Radar Capabilities'
-        case 'N':
-            return 'No Radar Capabilities'
+        case "R":
+            return "Radar Capabilities"
+        case "N":
+            return "No Radar Capabilities"
         case _:
             return value
 
 
 # 5.103 ‘Communications Frequency (COMM FREQ)
 def field_103(value, record):
-    if (value.isnumeric()):
-        return "{:.2f}".format(float(value)/100)
+    if value.isnumeric():
+        return "{:.2f}".format(float(value) / 100)
     else:
         return "BAD VALUE"
 
@@ -931,10 +1010,10 @@ def field_103(value, record):
 # 5.104 Frequency Units (FREQ UNIT)
 def field_104(value, record):
     d = defaultdict(def_val)
-    d['H'] = 'High Frequency (3000 kHz - 30,000 kHz)'
-    d['V'] = 'Very High Frequency (30,000 kHz - 200 MHz)'
-    d['U'] = 'Ultra High Frequency (200 MHz - 3000 MHz)'
-    d['C'] = 'Communication Channel for 8.33 kHz spacing'
+    d["H"] = "High Frequency (3000 kHz - 30,000 kHz)"
+    d["V"] = "Very High Frequency (30,000 kHz - 200 MHz)"
+    d["U"] = "Ultra High Frequency (200 MHz - 3000 MHz)"
+    d["C"] = "Communication Channel for 8.33 kHz spacing"
     return d[value] if d[value] != "bad value" else value + "BAD VALUE"
 
 
@@ -945,30 +1024,30 @@ def field_105(value, record):
 
 # 5.106 Service Indicator (SER IND)
 def field_106(value, record):
-    if (value.strip() == ''):
+    if value.strip() == "":
         return value
     sections = defaultdict(def_val)
-    sections['A  '] = 'Airport Advisory Serivce (AAS)'
-    sections['C  '] = 'Community Aerodrome Radio Station (CARS)'
-    sections['D  '] = 'Departure Service (Other than Departure Control Unit)'
-    sections['F  '] = 'Flight Information Serivce (FIS)'
-    sections['I  '] = 'Initial Contact (IC)'
-    sections['L  '] = 'Arrival Service (Other than Arrival Control Unit)'
-    sections['P  '] = 'Pre-Departure Clearance (Data Link Service)'
-    sections['S  '] = 'Aerodrome Flight Information Service (AFIS)'
-    sections['T  '] = 'Terminal Area Control (Other than dedicated Terminal Control Unit)'
-    sections[' A '] = 'Aerodrome Traffic Frequency (ATF)'
-    sections[' C '] = 'Common Traffic Advisory Frequency (CTAF)'
-    sections[' M '] = 'Mandatory Frequency (MF) '
-    sections[' R '] = 'Air/Air'
-    sections[' S '] = 'Secondary Frequency'
-    sections['  A'] = 'Air/Ground'
-    sections['  D'] = 'VHF Direction Finding Service (VDF)'
-    sections['  G'] = 'Remote Communications Air to Ground (RCAG)'
-    sections['  L'] = 'Language other than English'
-    sections['  M'] = 'Military Use Frequency'
-    sections['  P'] = 'Pilot Controlled Light (PCL)'
-    sections['  R'] = 'Remote Communications Outlet (RCO)'
+    sections["A  "] = "Airport Advisory Serivce (AAS)"
+    sections["C  "] = "Community Aerodrome Radio Station (CARS)"
+    sections["D  "] = "Departure Service (Other than Departure Control Unit)"
+    sections["F  "] = "Flight Information Serivce (FIS)"
+    sections["I  "] = "Initial Contact (IC)"
+    sections["L  "] = "Arrival Service (Other than Arrival Control Unit)"
+    sections["P  "] = "Pre-Departure Clearance (Data Link Service)"
+    sections["S  "] = "Aerodrome Flight Information Service (AFIS)"
+    sections["T  "] = "Terminal Area Control (Other than dedicated Terminal Control Unit)"
+    sections[" A "] = "Aerodrome Traffic Frequency (ATF)"
+    sections[" C "] = "Common Traffic Advisory Frequency (CTAF)"
+    sections[" M "] = "Mandatory Frequency (MF) "
+    sections[" R "] = "Air/Air"
+    sections[" S "] = "Secondary Frequency"
+    sections["  A"] = "Air/Ground"
+    sections["  D"] = "VHF Direction Finding Service (VDF)"
+    sections["  G"] = "Remote Communications Air to Ground (RCAG)"
+    sections["  L"] = "Language other than English"
+    sections["  M"] = "Military Use Frequency"
+    sections["  P"] = "Pilot Controlled Light (PCL)"
+    sections["  R"] = "Remote Communications Outlet (RCO)"
     return sections[value]
 
 
@@ -980,12 +1059,12 @@ def field_107(value, record):
 # 5.108 IFR Capability (IFR)
 def field_108(value, record):
     match value:
-        case 'Y':
-            return 'Official'
-        case 'N':
-            return 'Non-official'
+        case "Y":
+            return "Official"
+        case "N":
+            return "Non-official"
         case _:
-            raise ValueError('Invalid IFR Capability')
+            raise ValueError("Invalid IFR Capability")
 
 
 # 5.109 Runway Width (WIDTH)
@@ -1006,10 +1085,10 @@ def field_111(value, record):
 # 5.112 Marker Shape (SHAPE)
 def field_112(value, record):
     match value:
-        case 'E':
-            return 'Elliptical'
-        case 'B':
-            return 'Bone'
+        case "E":
+            return "Elliptical"
+        case "B":
+            return "Bone"
         case _:
             return value
 
@@ -1017,10 +1096,10 @@ def field_112(value, record):
 # 5.113 High/Low (HIGH/LOW)
 def field_113(value, record):
     match value:
-        case 'H':
-            return 'High Power (general use)'
-        case 'L':
-            return 'Low Power (low altitude use)'
+        case "H":
+            return "High Power (general use)"
+        case "L":
+            return "Low Power (low altitude use)"
         case _:
             return value
 
@@ -1042,12 +1121,12 @@ def field_116(value, record):
 
 # 5.117 FIR/UIR Indicator (IND)
 def field_117(value, record):
-    if value == 'F':
-        return 'FIR'
-    elif value == 'U ':
-        return 'UIR'
-    elif value == 'B':
-        return 'Combined FIR/UIR'
+    if value == "F":
+        return "FIR"
+    elif value == "U ":
+        return "UIR"
+    elif value == "B":
+        return "Combined FIR/UIR"
     else:
         print("UNKNOWN:", value)
         # raise ValueError("Invalid FIR/UIR Indicator")
@@ -1055,24 +1134,24 @@ def field_117(value, record):
 
 # 5.118 Boundary Via (BDRY VIA)
 def field_118(value, record):
-    s = ''
+    s = ""
     match value[0]:
-        case 'C':
-            s += 'Circle'
-        case 'G':
-            s += 'Great Circle'
-        case 'H':
-            s += 'Rhumb Line'
-        case 'L':
-            s += 'Counter Clockwise ARC'
-        case 'R':
-            s += 'Clockwise ARC'
+        case "C":
+            s += "Circle"
+        case "G":
+            s += "Great Circle"
+        case "H":
+            s += "Rhumb Line"
+        case "L":
+            s += "Counter Clockwise ARC"
+        case "R":
+            s += "Clockwise ARC"
         case _:
             print("UNKNOWN:", value)
             raise ValueError("Invalid Boundary Via")
 
-    if value[1] == 'E':
-        s += ', End of description, return to origin point'
+    if value[1] == "E":
+        s += ", End of description, return to origin point"
 
     return s
 
@@ -1099,7 +1178,7 @@ def field_122(value, record):
 
 # 5.123 FIR/UIR ATC Reporting Units Altitude (RUA)
 def field_123(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.124 FIR/UIR Entry Report (ENTRY)
@@ -1119,7 +1198,7 @@ def field_126(value, record):
 
 # 5.127 Maximum Altitude (MAX ALT)
 def field_127(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.128 Restrictive Airspace Type (REST TYPE)
@@ -1159,8 +1238,8 @@ def field_134(value, record):
 
 # 5.135 Course FROM/TO.
 def field_135(value, record):
-    if (value.isnumeric()):
-        return float(value)/10
+    if value.isnumeric():
+        return float(value) / 10
     else:
         return "BAD VALUE"
 
@@ -1222,7 +1301,7 @@ def field_146(value, record):
 
 # 5.147 Sector Altitude (SEC ALT)
 def field_147(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.148 Enroute Alternate Airport (EAA)
@@ -1292,7 +1371,7 @@ def field_160(value, record):
 
 # 5.161 Restriction Altitude (REST ALT)
 def field_161(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.162 Step Climb Indicator (STEP)
@@ -1312,10 +1391,10 @@ def field_164(value, record):
 
 # 5.165 Magnetic/True Indicator (M/T IND)
 def field_165(value, record):
-    if value == 'M':
-        return 'Magnetic'
-    elif value == 'T':
-        return 'True'
+    if value == "M":
+        return "Magnetic"
+    elif value == "T":
+        return "True"
     else:
         return value
 
@@ -1379,22 +1458,22 @@ def field_176(value, record):
 # 5.177 Public/Military Indicator (PUB/MIL)
 def field_177(value, record):
     match value:
-        case 'C':
-            return 'Public / Civil'
-        case 'M':
-            return 'Military'
-        case 'P':
-            return 'Private (not open to public)'
+        case "C":
+            return "Public / Civil"
+        case "M":
+            return "Military"
+        case "P":
+            return "Private (not open to public)"
         case _:
-            raise ValueError('Invalid Pub/Mil')
+            raise ValueError("Invalid Pub/Mil")
 
 
 # 5.178 Time Zone
 def field_178(value, record):
     if value[0].isalpha() and value[1:].isnumeric():
         x = string.ascii_uppercase.index(value[0]) - 12
-        y = 'GMT +' + str(x) if x >= 0 else 'GMT -' + str(x)
-        return y + ':' + str(value[1:])
+        y = "GMT +" + str(x) if x >= 0 else "GMT -" + str(x)
+        return y + ":" + str(value[1:])
     else:
         print("UNKNOWN:", value)
 
@@ -1402,10 +1481,10 @@ def field_178(value, record):
 # 5.179 Daylight Time Indicator (DAY TIME)
 def field_179(value, record):
     match value:
-        case 'Y':
-            return 'Yes'
-        case 'N':
-            return 'No'
+        case "Y":
+            return "Yes"
+        case "N":
+            return "No"
         case _:
             print("UNKNOWN:", value)
 
@@ -1418,19 +1497,19 @@ def field_180(value, record):
 # 5.181 H24 Indicator (H24)
 def field_181(value, record):
     d = defaultdict(def_val)
-    d['Y'] = '24-Hour Availability'
-    d['N'] = 'Part-time Availability'
+    d["Y"] = "24-Hour Availability"
+    d["N"] = "Part-time Availability"
     return d[value] if d[value] != "bad value" else value + "BAD VALUE"
 
 
 # 5.182 Guard/Transmit (G/T)
 def field_182(value, record):
     match value:
-        case 'G':
+        case "G":
             return "Guard (radio receives on this freq)"
-        case 'T':
+        case "T":
             return "Transmit (radio transmits on this freq)"
-        case ' ':
+        case " ":
             return "Guards and Transmits"
         case _:
             raise ValueError("bad guard/transmit")
@@ -1443,7 +1522,7 @@ def field_183(value, record):
 
 # 5.184 Communication Altitude (COMM ALTITUDE)
 def field_184(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.185 Sector Facility (SEC FAC)
@@ -1504,41 +1583,41 @@ def field_195(value, record):
 # 5.196 Name Format Indicator (NAME IND)
 def field_196(value, record):
     match value[0]:
-        case 'A':
-            return 'Abeam Fix'
-        case 'B':
-            return 'Bearing and Distance Fix '
-        case 'D':
-            return 'Airport Name as Fix'
-        case 'F':
-            return 'FIR Fix'
-        case 'H':
-            return 'Phonetic Letter Name Fix'
-        case 'I':
-            return 'Airport Ident as Fix'
-        case 'L':
-            return 'Latitude/Longitude Fix '
-        case 'M':
-            return 'Multiple Word Name Fix'
-        case 'N':
-            return 'Navaid Ident as Fix'
-        case 'P':
-            return 'Published Five - Letter - Name - Fix'
-        case 'Q':
-            return 'Published Name Fix, less than five letters'
-        case 'R':
-            return 'Published Name Fix, more than five letters'
-        case 'T':
-            return 'Airport/Rwy Related Fix (Note 2)'
-        case 'U':
-            return 'UIR Fix'
+        case "A":
+            return "Abeam Fix"
+        case "B":
+            return "Bearing and Distance Fix "
+        case "D":
+            return "Airport Name as Fix"
+        case "F":
+            return "FIR Fix"
+        case "H":
+            return "Phonetic Letter Name Fix"
+        case "I":
+            return "Airport Ident as Fix"
+        case "L":
+            return "Latitude/Longitude Fix "
+        case "M":
+            return "Multiple Word Name Fix"
+        case "N":
+            return "Navaid Ident as Fix"
+        case "P":
+            return "Published Five - Letter - Name - Fix"
+        case "Q":
+            return "Published Name Fix, less than five letters"
+        case "R":
+            return "Published Name Fix, more than five letters"
+        case "T":
+            return "Airport/Rwy Related Fix (Note 2)"
+        case "U":
+            return "UIR Fix"
     match value[1]:
-        case 'O':
-            return 'Localizer Marker with officially published five - letter identifier'
-        case 'M':
-            return 'Localizer Marker without officially published five - letter identifier'
+        case "O":
+            return "Localizer Marker with officially published five - letter identifier"
+        case "M":
+            return "Localizer Marker without officially published five - letter identifier"
         case _:
-            return 'Unknown Name Format Indicator'
+            return "Unknown Name Format Indicator"
 
 
 # 5.197 Datum Code (DATUM)
@@ -1549,23 +1628,23 @@ def field_197(value, record):
 # 5.198 Modulation (MODULN)
 def field_198(value, record):
     d = defaultdict(def_val)
-    d['A'] = 'Amplitude Modulated'
-    d['F'] = 'Frequency Modulated'
+    d["A"] = "Amplitude Modulated"
+    d["F"] = "Frequency Modulated"
     return d[value] if d[value] != "bad value" else value + "BAD VALUE"
 
 
 # 5.199 Signal Emission (SIG EM)
 def field_199(value, record):
-    if value.strip() == '':
+    if value.strip() == "":
         return value
     d = defaultdict(def_val)
-    d['3'] = 'Double Sideband (A3) '
-    d['A'] = 'Single sideband, reduced carrier (A3A) '
-    d['B'] = 'Two Independent sidebands (A3B)'
-    d['H'] = 'Single sideband, full carrier (A3H) '
-    d['J'] = 'Single sideband, suppressed carrier (A3J)'
-    d['L'] = 'Lower (single) sideband, carrier unknown'
-    d['U'] = 'Upper (single) sideband, carrier unknown'
+    d["3"] = "Double Sideband (A3) "
+    d["A"] = "Single sideband, reduced carrier (A3A) "
+    d["B"] = "Two Independent sidebands (A3B)"
+    d["H"] = "Single sideband, full carrier (A3H) "
+    d["J"] = "Single sideband, suppressed carrier (A3J)"
+    d["L"] = "Lower (single) sideband, carrier unknown"
+    d["U"] = "Upper (single) sideband, carrier unknown"
     return d[value] if d[value] != "bad value" else value + "BAD VALUE"
 
 
@@ -1616,7 +1695,7 @@ def field_208(value, record):
 
 # 5.209 Altitude Limitation (ALT LIMIT)
 def field_209(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.210 Sequence End Indicator (SEQ END)
@@ -1771,7 +1850,7 @@ def field_239(value, record):
 
 # 5.240 Altitude (ALT)
 def field_240(value, record):
-    return value.lstrip('0') + " ft" if value.isnumeric() else value
+    return value.lstrip("0") + " ft" if value.isnumeric() else value
 
 
 # 5.241 Fix Related Transition Code (FRT Code)
@@ -1916,8 +1995,8 @@ def field_268(value, record):
 
 # 5.269 Helicopter Procedure Course (HPC)
 def field_269(value, record):
-    if (value.isnumeric()):
-        return float(value)/10
+    if value.isnumeric():
+        return float(value) / 10
     else:
         return "BAD VALUE"
 
